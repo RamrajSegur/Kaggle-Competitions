@@ -1,0 +1,17 @@
+Bad quality images
+==================
+0a5216ef5.jpg
+0c0bf8fb8.jpg
+0ce588f3d.jpg
+0d0a1d2fb.jpg
+0d7bd80d3.jpg
+0d25e3354.jpg
+0d605d56a.jpg
+0d37648f9.jpg
+0d757866b.jpg
+0db59bbec.jpg
+0e6abdd05.jpg
+
+The list contains few of the bad image filenames and it was found manually.
+
+Link: https://www.kaggle.com/c/humpback-whale-identification/discussion/73882
