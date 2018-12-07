@@ -1,0 +1,8 @@
+# import module we'll need to import our custom module
+from shutil import copyfile
+
+# copy our file into the working directory (make sure it has .py suffix)
+copyfile(src = "../input/libraries/exploratory_analysis.py", dst = "../working/exploratory_analysis.py")
+
+# import all our functions
+import exploratory_analysis
