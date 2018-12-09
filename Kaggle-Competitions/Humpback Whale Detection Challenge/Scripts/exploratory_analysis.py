@@ -111,3 +111,38 @@ def image_subplot_from_list_filenames_and_dir(image_filenames_list, dir, title):
 		ax.set_title(title)
 		image = plt.imread(dir+image_filenames_list[n-1])
 		plt.imshow(image)
+		
+def filenames_shape(dataframe, dir_path,columnID):
+	"""
+	Prepare and return the numpy array with shape of Nx2 
+	first column: filenames of the image in dir
+	second column: shape of the respective images
+	
+	Parameters:
+	dataframe : pandas dataframe having filenames
+	dir : path for the directory having the images 
+	columnID : column of the dataframe containing filenames
+	
+	Return:
+	combined : the numpy array with
+					first column: filenames of the image in dir
+					second column: shape of the respective images
+	"""
+	if not isinstance(dataframe, pd.core.frame.DataFrame):
+		raise ValueError("DataFrame is not a pandas dataframe type")
+		
+	if not isinstance(columnID, str):
+		raise ValueError("columnID should be a string")
+	 
+	filenames = [] #List to store filenames
+	shapes = [] # List to store shapes of the image files
+	for index, row in file.iterrows():  # Iterate through each row in dataframe
+		filename = row[columnID] # Read the filename stored in columnID
+		shape = mpimg.imread(dir_path+filename).shape # Find the shape of the image
+		filenames.append(filename) # Append the filename of the image to filenames list
+		shapes.append(shape) # Append the shape of the image to shapes list
+	shapes_array = np.array(shapes) # Convert the list to array
+	filenames_array = np.array(filenames) # Convert the list to array
+	combined = np.vstack((filenames_array, shapes_array)).T
+	
+	return combined
