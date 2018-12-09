@@ -1,5 +1,7 @@
 import pandas as pd
 import matplotlib.pyplot as plt
+import matplotlib.image as mpimg
+import numpy as np
 
 def description(file):
 	"""
@@ -136,7 +138,7 @@ def filenames_shape(dataframe, dir_path,columnID):
 	 
 	filenames = [] #List to store filenames
 	shapes = [] # List to store shapes of the image files
-	for index, row in file.iterrows():  # Iterate through each row in dataframe
+	for index, row in dataframe.iterrows():  # Iterate through each row in dataframe
 		filename = row[columnID] # Read the filename stored in columnID
 		shape = mpimg.imread(dir_path+filename).shape # Find the shape of the image
 		filenames.append(filename) # Append the filename of the image to filenames list
