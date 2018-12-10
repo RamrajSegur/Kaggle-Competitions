@@ -2,6 +2,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
 import numpy as np
+from mpl_toolkits.mplot3d import Axes3D
 
 def description(file):
 	"""
@@ -148,3 +149,72 @@ def filenames_shape(dataframe, dir_path,columnID):
 	combined = np.vstack((filenames_array, shapes_array)).T
 	
 	return combined
+	
+def filenames_shape_hist_distribution_plot3D(dataframe,columnID1, columnID2, xrange, yrange):
+	"""
+	Plot the histogram distribution of number of images for each combination of width and height dimension of images
+	Return the width interval and height interval which covers 90% (approx) of the data
+	
+	Parameters:
+	dataframe - pandas dataframe containing the data for the plot
+	columnID1 - column ID of the dataframe that can be taken as xaxis data (height)
+	columnID2 - column ID of the dataframe that can be taken as yaxis data (width)
+	xrange - range of values in the columnID1 (max x value) : min x value is considered as 0
+	yrange - range of values in the columnID2 (max y value) : min y value is considered as 0
+	
+	Return:
+	Plot the histogram distribution 
+	Print the min and max height and width range that contains 90% of data
+	Return the range of  width and height in form of list of tuples [(width_max, width_min),(height_max,height_min)]
+	
+	"""
+	if not isinstance(dataframe, pd.core.frame.DataFrame):
+		raise ValueError("DataFrame is not a pandas dataframe type")
+	
+	if not isinstance(columnID1, str):
+		raise ValueError("columnID1 should be a string")
+	
+	if not isinstance(columnID2, str):
+		raise ValueError("columnID2 should be a string")
+		
+	if not isinstance(xrange, int):
+		raise ValueError("xrange should be an integer")
+	
+	if not isinstance(yrange, int):
+		raise ValueError("yrange should be an integer")
+	
+	fig = plt.figure()
+	ax = fig.add_subplot(111, projection='3d')
+	
+	# Create the histogram
+	hist, xedges, yedges = np.histogram2d(dataframe[columnID1], dataframe[columnID2], bins=20, range=[[0, xrange], [0, yrange]])
+
+	xpos, ypos = np.meshgrid(xedges[:-1] + 1, yedges[:-1] + 1, indexing="ij")
+	xpos = xpos.ravel() # Storing the xpositions (heights)
+	ypos = ypos.ravel() # Storing the ypositions (widths)
+	zpos = 0 # Z-position always zero
+
+	# Construct arrays with the dimensions for the 16 bars.
+	dx = dy = 200* np.ones_like(zpos)
+	dz = hist.ravel() # Number of images (third dimension) at each position of width and height
+
+	ax.bar3d(xpos, ypos, zpos, dx, dy, dz, color='r') # Create 3D bar plot
+	# Labeling the axes
+	ax.set_xlabel("Height") 
+	ax.set_ylabel("Width")
+	ax.set_zlabel("Number of Images")
+	
+	plt.show()
+	
+	perc_dz = (dz/np.sum(dz))*100 # Normalize the distribution and convert to percentage
+	
+	width_max = max(xpos[perc_dz>5]) # Maximum width of the range having 90% of the images
+	width_min = min(xpos[perc_dz>5]) # Minimum width of the range having 90% of the images
+	
+	height_max = max(ypos[perc_dz>5]) # Maximum height of the range having 90% of the images
+	height_min = min(ypos[perc_dz>5]) # Minimum height of the range having 90% of the images
+	
+	print(" 90% of images have width in between the range: " + str(width_max) + " and " + str(width_min))
+	print(" 90% of images have height in between the range: " + str(height_max) + " and " + str(height_min))
+	
+	return [(width_max, width_min),(height_max, height_min)]
