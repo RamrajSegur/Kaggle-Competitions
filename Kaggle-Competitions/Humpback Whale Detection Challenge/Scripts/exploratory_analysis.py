@@ -218,3 +218,28 @@ def filenames_shape_hist_distribution_plot3D(dataframe,columnID1, columnID2, xra
 	print(" 90% of images have height in between the range: " + str(height_max) + " and " + str(height_min))
 	
 	return [(width_max, width_min),(height_max, height_min)]
+	
+def find_uniq_values_counts(file, ID):
+    """
+    Find the unique values and their counts along a column in the dataframe
+    
+    Parameters:
+    file - Pandas dataframe
+    ID - Column ID to look for unique values
+    
+    Return:
+    dict_uniq_Ids : {unique_value: [unique_identification_number, number of instances of unique value in that column]}
+    
+    """
+        
+    dict_unique_Ids = {} # Initialize the dictionary
+    unique_file_Ids = file[ID].unique() # Get the unique elements from the column "ID" of the file dataframe
+    unique_file_Ids.sort() # Sort the elements  
+    class_count = file[ID].value_counts() # Get the count of unique element from the column "ID" of the dataframe
+    identification = 1 # Initialize the identification number to be assigned for each unique class
+    for unique_Id in unique_file_Ids: 
+        number_of_instances = class_count.loc[unique_Id] # Get the number of instances of that 'unique ID'
+        dict_unique_Ids[unique_Id] = [identification, number_of_instances] # Storing the key value pair in the dictionary
+        identification = identification + 1 # Update the identification number for the next class
+
+    return dict_unique_Ids # Return the dictionary created
