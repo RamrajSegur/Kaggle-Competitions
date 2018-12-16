@@ -1,4 +1,4 @@
-import pandas as pd
+import pandas as pd #pandas library import
 import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
 import numpy as np

@@ -20,3 +20,6 @@ Contents of the repository:
 Notebooks -> Kaggle Notebooks from different timestamps
 Resources -> Relevant materials from Kaggle Dicussion Forum and the web
 Scripts -> Relevant library and script files for the competition
+
+
+Added by Chen
