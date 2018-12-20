@@ -1,0 +1,8 @@
+1. Spatial information in the image could be critical for the task, maybe an approach to take into consideration would be to transform images to maintain the same aspect ratio.
+
+2. Other approach would be to resize the images to the desired shape (changing the aspect ratio), or randomly cropping them (approach which could be used for data augmentation).
+
+
+Link:
+=====
+https://www.kaggle.com/c/humpback-whale-identification/discussion/74284
