@@ -1,0 +1,7 @@
+Totally 5005 whales but 2073 whales has only one picture, 4171 whales has less than 5 picturr, the label 'new_whale' which has 9664 pictures. Thresholding can be used to deal with the 'new_whale' class.
+
+
+
+Link:
+=====
+https://www.kaggle.com/c/humpback-whale-identification/discussion/74459
