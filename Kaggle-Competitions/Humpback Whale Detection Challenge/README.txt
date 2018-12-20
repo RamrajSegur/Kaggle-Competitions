@@ -17,9 +17,10 @@ To help understand marine mammal population dynamics around the globe.
 
 Contents of the repository:
 ---------------------------
+Approaches -> Different proposed approaches and relevant information needed for them
+Challenges -> Inherent challenges with the dataset and solution proposals
 Notebooks -> Kaggle Notebooks from different timestamps
 Resources -> Relevant materials from Kaggle Dicussion Forum and the web
 Scripts -> Relevant library and script files for the competition
+infofiles -> Information extracted from the training dataset images
 
-
-Added by Chen
