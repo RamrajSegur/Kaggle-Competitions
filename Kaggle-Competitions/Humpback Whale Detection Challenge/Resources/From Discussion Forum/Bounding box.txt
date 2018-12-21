@@ -1,0 +1,4 @@
+Use bounding box (draw an area of interest) to create an area which only contains whale.
+
+Link (including codes):
+https://www.kaggle.com/suicaokhoailang/resnet50-bounding-boxes-0-628-lb

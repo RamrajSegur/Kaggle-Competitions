@@ -1,0 +1,5 @@
+1. Large image size helped, gave diminished returns beyond 384x384, not really sure about the number.
+2. Squashing everything to a square or keep the original aspect ratio?
+
+Link
+https://www.kaggle.com/c/humpback-whale-identification/discussion/74402

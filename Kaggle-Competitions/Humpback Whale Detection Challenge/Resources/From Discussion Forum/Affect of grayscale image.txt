@@ -1,0 +1,5 @@
+Someone said grayscale could increase the score while others said not. 
+--To be tested
+
+Link: 
+https://www.kaggle.com/c/humpback-whale-identification/discussion/74402

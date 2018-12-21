@@ -1,0 +1,7 @@
+1. As there are many different kinds of whales under the class of new_whale, the neural network model is better to be trained using dataset without new_whale class.
+2. In order to insert new_whale label back, we could use this idea: if the probability of a class is below a centain threshold, then that class turns to be new_whale. 
+3. As most of the bad quality images are labeled as new_whale (except the last one), which would be removed,  we don't need to remove bad images particularly.
+
+Link:
+https://www.kaggle.com/c/humpback-whale-identification/discussion/74143
+https://www.kaggle.com/c/humpback-whale-identification/discussion/74402
