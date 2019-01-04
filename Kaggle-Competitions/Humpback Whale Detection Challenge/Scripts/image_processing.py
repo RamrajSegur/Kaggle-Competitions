@@ -1,7 +1,7 @@
 import cv2
 import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
-
+import numpy as np
 # Any results you write to the current directory are saved as output.
 
 def resize(image, width, height):
@@ -89,3 +89,33 @@ def conversion_resize(
         image = resize(image, width, height)
 
     return image
+
+
+def conversion_resize_generator(
+                                color_conversion, filename_with_path,
+                                resize_ = 'False', width = None, height = None):
+    """
+	Do the conversion to the image as specified and make it compatible
+    with generator
+
+    Parameters:
+    color_conversion: To convert the image from one type to other
+                    RGB2Gray : RGB -> Grayscale Conversion
+                    Gray2RGB : Grayscale -> RGB
+    filename_with_path : name of the image file with the pathname
+    resize :  Flag that denotes if the file has to be resized
+              Default :  False  or True
+    width : Width of the output image required
+    height : Height of the output image required
+
+    Return:
+    Returns the image in the form of numpy array compatible for generator
+
+	"""
+    converted_image = conversion_resize(
+            color_conversion, filename_with_path,
+            resize_ = resize_, width = width, height = height)
+
+    result_image = np.expand_dims(converted_image, axis=0)
+
+    return result_image
