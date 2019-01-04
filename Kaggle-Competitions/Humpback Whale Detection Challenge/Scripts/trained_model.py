@@ -38,7 +38,7 @@ def model_name_model_file(model_name):
 
     return dict_model[model_name]
 
-def pretrained_model(model_name, input_tensor = None, trainable = False):
+def pretrained_model(input_tensor , model_name , input_shape, trainable = False):
     """Return the pretrained model
 
     Parameters:
@@ -65,7 +65,7 @@ def pretrained_model(model_name, input_tensor = None, trainable = False):
     keras_func = model_name_model_file(model_name)[0] # Get the keras function corresponding to the model name
     weights_filename = model_name_model_file(model_name)[1] # Get the weights filename corresponding to the model name
     model = keras_func(weights='../input/full-keras-pretrained-no-top/'+weights_filename,
-                       include_top=False, input_tensor = input_tensor) # fetch the pretrained model
+                       include_top=False, input_shape = input_shape,input_tensor = input_tensor) # fetch the pretrained model
     model.trainable = trainable # Assign the trainable parameter of the model
 
     return model
